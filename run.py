@@ -655,6 +655,15 @@ def discover_recommendations(current_user):
     except Exception as e:
         print(f"[Error] Discover recommendations failed: {e}")
         return jsonify({'error': str(e)}), 500
+    # --- Root Route for Render Health Check ---
+@app.route("/", methods=["GET"])
+def home():
+    """Simple root route for Render health checks and manual testing."""
+    return jsonify({
+        "message": "📚 LibroVault Backend is running successfully on Render!",
+        "status": "OK",
+        "version": "1.0.0"
+    }), 200
 
 # --- 6. Run the App ---
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ from functools import wraps
 load_dotenv()
 app = Flask(__name__)
 # Configure CORS to allow requests from your frontend's origin
-CORS(app, origins=["http://localhost:5173", "http://localhost:5174"])  # Adjust port if needed
+CORS(app, origins=["http://localhost:5173", "https://librovault031.vercel.app"])  # Adjust port if needed
 
 # Supabase initialization
 url: str = os.environ.get("SUPABASE_URL")
@@ -655,7 +655,7 @@ def discover_recommendations(current_user):
     except Exception as e:
         print(f"[Error] Discover recommendations failed: {e}")
         return jsonify({'error': str(e)}), 500
-    # --- Root Route for Render Health Check ---
+# --- Root Route for Render Health Check ---
 @app.route("/", methods=["GET"])
 def home():
     """Simple root route for Render health checks and manual testing."""
